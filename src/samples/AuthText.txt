@@ -1,0 +1,21 @@
+Project name
+react-image-gallery
+Project ID 
+react-image-gallery-6486b
+Project number 
+792087319248
+Default GCP resource location 
+Not yet selected
+Web API Key
+AIzaSyDFf89BWZBQ2ztOKznjhPnIHmEUb1CyR_8
+
+
+
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        console.log(userCredential);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
