@@ -19,3 +19,9 @@ AIzaSyDFf89BWZBQ2ztOKznjhPnIHmEUb1CyR_8
       .catch((error) => {
         console.log(error);
       });
+
+    
+
+    pexel API key:
+    Your API key: mmyqqQoTTmiCejdNnCaeqDUoYO0vOoL0TPPBSxkfOkTKS9mPzN9JTIDH
+

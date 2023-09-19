@@ -1,46 +1,51 @@
+import "../App.css";
+import React from "react";
 
-<div class="flex items-center justify-center py-4 md:py-8 flex-wrap">
-    <button type="button" class="text-blue-700 hover:text-white border border-blue-600 bg-white hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-full text-base font-medium px-5 py-2.5 text-center mr-3 mb-3 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:bg-gray-900 dark:focus:ring-blue-800">All categories</button>
-    <button type="button" class="text-gray-900 border border-white hover:border-gray-200 dark:border-gray-900 dark:bg-gray-900 dark:hover:border-gray-700 bg-white focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-full text-base font-medium px-5 py-2.5 text-center mr-3 mb-3 dark:text-white dark:focus:ring-gray-800">Shoes</button>
-    <button type="button" class="text-gray-900 border border-white hover:border-gray-200 dark:border-gray-900 dark:bg-gray-900 dark:hover:border-gray-700 bg-white focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-full text-base font-medium px-5 py-2.5 text-center mr-3 mb-3 dark:text-white dark:focus:ring-gray-800">Bags</button>
-    <button type="button" class="text-gray-900 border border-white hover:border-gray-200 dark:border-gray-900 dark:bg-gray-900 dark:hover:border-gray-700 bg-white focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-full text-base font-medium px-5 py-2.5 text-center mr-3 mb-3 dark:text-white dark:focus:ring-gray-800">Electronics</button>
-    <button type="button" class="text-gray-900 border border-white hover:border-gray-200 dark:border-gray-900 dark:bg-gray-900 dark:hover:border-gray-700 bg-white focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-full text-base font-medium px-5 py-2.5 text-center mr-3 mb-3 dark:text-white dark:focus:ring-gray-800">Gaming</button>
-</div>
-<div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+
+
+const images = [
+  { id: 1, tag: "Sports", url: "https://images.pexels.com/photos/4761792/pexels-photo-4761792.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
+  { id: 2, tag: "Personality", url: "https://images.pexels.com/photos/3810832/pexels-photo-3810832.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
+  { id: 3, tag: "Electronics", url: "https://media.istockphoto.com/id/178716575/photo/mobile-devices.jpg?s=612x612&w=0&k=20&c=9YyINgAbcmjfY_HZe-i8FrLUS43-qZh6Sx6raIc_9vQ=" },
+  { id: 4, tag: "Personality", url: "https://images.pexels.com/photos/445109/pexels-photo-445109.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
+  { id: 5, tag: "Bags", url: "https://images.pexels.com/photos/634538/pexels-photo-634538.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
+  { id: 6, tag: "Sports", url: "https://images.pexels.com/photos/1080884/pexels-photo-1080884.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
+  { id: 7, tag: "Bags", url: "https://images.pexels.com/photos/63778/pexels-photo-63778.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
+  { id: 8, tag: "Electronics", url: "https://images.pexels.com/photos/788946/pexels-photo-788946.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
+  { id: 9, tag: "Personality", url: "https://images.pexels.com/photos/6142740/pexels-photo-6142740.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
+  { id: 10, tag: "Sports", url: "https://images.pexels.com/photos/5247203/pexels-photo-5247203.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
+];
+
+const categories = ["All Pictures", "Personal", "Bags", "Electronics", "Sports"];
+
+function Gallery() {
+  return (
     <div>
-        <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" alt="">
+      <div className="flex items-center justify-center py-4 md:py-8 flex-wrap">
+        {categories.map((category, index) => (
+          <button
+            key={index}
+            type="button"
+            className="text-white border  bg-gray-900  focus:bg-red-500 rounded-full text-base font-medium px-5 py-2.5 text-center mr-3 mb-3"
+          >
+            {category}
+          </button>
+        ))}
+      </div>
+      <div className="grid grid-cols-3 md:grid-cols-4 gap-4 px-10">
+        {images.map((image) => (
+          <div key={image.id}>
+            <h className="bg-red-500 p-2 rounded-br-xl absolute text-white">{image.tag}</h>
+            <img
+              className="h-[400px] w-[500px] rounded-lg object-cover object-center"
+              src={image.url}
+              alt={image.tag}
+            />
+          </div>
+        ))}
+      </div>
     </div>
-    <div>
-        <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
-    </div>
-    <div>
-        <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg" alt="">
-    </div>
-    <div>
-        <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg" alt="">
-    </div>
-    <div>
-        <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg" alt="">
-    </div>
-    <div>
-        <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-5.jpg" alt="">
-    </div>
-    <div>
-        <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-6.jpg" alt="">
-    </div>
-    <div>
-        <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-7.jpg" alt="">
-    </div>
-    <div>
-        <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-8.jpg" alt="">
-    </div>
-    <div>
-        <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-9.jpg" alt="">
-    </div>
-    <div>
-        <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-10.jpg" alt="">
-    </div>
-    <div>
-        <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-11.jpg" alt="">
-    </div>
-</div>
+  );
+}
+
+export default Gallery;
