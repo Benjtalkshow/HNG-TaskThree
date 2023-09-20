@@ -1,14 +1,14 @@
-import React, { useState , useEffect } from "react";
-import "../App.css";
+import "../styles/index.css"
+import React, { useState } from "react";
 import { auth } from "../Auth/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate, useLocation } from "react-router-dom";
-import bg from "../assets/bg.png";
+import bg from "../assets/images/bg.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 
-function LandingPage() {
+function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [success, setSuccess] = useState("");
@@ -158,4 +158,15 @@ const from = location.state?.from?.pathname || "/gallery";
   );
 }
 
-export default LandingPage;
+export default LoginPage;
+
+// import React from "react";
+// import Banner from '../components/Banner';
+// const Home = () => {
+//     return (
+//         <div className="home">
+//             <Banner />
+//         </div>
+//     )
+// }
+// export default Home

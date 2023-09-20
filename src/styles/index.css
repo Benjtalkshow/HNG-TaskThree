@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz@9..40&family=Lato:wght@300;400&family=Poppins&display=swap');
+:root{
+  --text-color: #0D6EFD;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.banner{
+  height: 100vh;
+  overflow-y: hidden;
+  display: flex;
+  align-items: center;
+}.illustration {
+  width: 50%;
+  padding: 1rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.caption{
+  text-align: center;
+  color: var(--text-color);
+}
+.illustration-images {
+  width: 80%;
+}
+.logo-span{
+  color: var(--text-color) !important;
+}
+.login-container{
+  width: 52%;
+  padding: -5px;
+  height: 100%;
+  background-color: black;
+}
+.form {
+  width: 90%;
+  margin: auto;
+  height: 100%;
+  color: white;
+  padding-top: 30px;
+  padding-right: 10px;
+}
+.login-head{
+  text-align: center;
+  font-size: 19px;
+}
+.text{
+  color: white;
+  font-size: 25px;
+}
+label{
+  margin-bottom: 10px;
+}
+input{
+  width: 99%;
+  padding: 10px;
+  outline: none;
+  border: none;
+  color: black;
+}
+.button{
+  padding: 10px;
+  width: 100%;
+  background-color: var(--text-color);
+  color: white;
+  cursor: pointer;
+  border: none;
+  font-size: 15px;
+}
+.button-container{
+  width: 103%;
+  margin-top: 10px;
+}
+
+
+
+
+
+.search-form {
+  display: flex;
+  width: 50%;
+  align-items: center;
+}
+
+.search-input {
+  padding: 5px;
+  border: 1px solid var(--text-color);
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 15px;
+  margin-right: 10px; /* Space between input and button */
+}
+
+
+
+
+
+.arc {
+  position: absolute;
+  background-color: lightgrey;
+}
+
+.top-left {
+  top: 0;
+  left: 0;
+  width: 150px;
+  height: 150px;
+  border-radius: 0 0 100% 0;
+}
+
+.bottom-right {
+  bottom: 0;
+  right: 0;
+  width: 150px;
+  height: 150px;
+  border-radius: 100% 0 0 0;
+}
+.tags{
+  
+  display: flex;
+  width: 70%;
+  margin: 10px auto;
+  z-index: 5;
+  justify-content: space-between;
+}
+.tag{
+  border: 1px solid black;
+  border-radius: 18px;
+  padding: 8px;
+  width: 80px;
+  text-align: center;
+  cursor: pointer;
+}
+.active{
+  background-color: black;
+  color: white;
+  font-weight: bold;
+}
