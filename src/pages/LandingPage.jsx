@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
 import "../App.css";
 import { auth } from "../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import bg from "../assets/bg.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-
 function LandingPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -15,6 +14,7 @@ function LandingPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [passwordVisible, setPasswordVisible] = useState(false);
   const navigate = useNavigate();
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();

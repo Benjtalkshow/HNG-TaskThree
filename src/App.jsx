@@ -3,6 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import Gallery from "./pages/Gallery";
 import ErrorPage from "./pages/ErrorPage";
+
+
+
 function App() {
   return (
     <>
