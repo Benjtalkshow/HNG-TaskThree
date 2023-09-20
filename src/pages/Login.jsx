@@ -1,11 +1,13 @@
 import React, { useState , useEffect } from "react";
 import "../App.css";
-import { auth } from "../firebase";
+import { auth } from "../Auth/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import bg from "../assets/bg.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+
+
 function LandingPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -13,8 +15,10 @@ function LandingPage() {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const navigate = useNavigate();
 
+  const navigate = useNavigate();
+const location = useLocation();
+const from = location.state?.from?.pathname || "/gallery";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,7 +29,8 @@ function LandingPage() {
       setSuccess("Login successful!");
       setTimeout(() => {
         setSuccess("");
-        navigate("/gallery");
+        // navigate("/gallery");
+        navigate(from, {replace : true});
       }, 3000);
     } catch (error) {
       setError("Invalid email or password");
