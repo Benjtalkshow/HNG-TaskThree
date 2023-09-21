@@ -1,4 +1,3 @@
-import "../styles/index.css";
 import React, { useState, useEffect } from "react";
 import { auth } from "../Auth/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";

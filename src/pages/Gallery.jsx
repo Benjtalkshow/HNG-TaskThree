@@ -40,7 +40,6 @@ const Gallery = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         const imagesWithCategories = data.photos.map((photo) => ({
           id: photo.id.toString(),
           src: photo.src.large,
