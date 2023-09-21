@@ -88,8 +88,7 @@ const DragAndDrop = ({
                               className="DragAndDrop-image h-[200px] md:h-[400px] w-[500px] rounded-lg object-cover object-center"
                               data-aos="fade-up"
                             />
-                            <div className="bg-red-500 top-0 p-2 rounded-br-xl z-10 absolute text-white text-xs">
-                              <p className="text-[10px]">Photographer:</p>
+                            <div className="bg-red-500 top-0 p-2 rounded-br-xl z-10 absolute text-white text-[8px] sm:text-xs">
                               {image.alt}
                             </div>{" "}
                           </div>
