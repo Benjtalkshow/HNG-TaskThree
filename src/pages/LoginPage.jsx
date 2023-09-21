@@ -1,4 +1,4 @@
-import "../styles/index.css"
+import "../styles/index.css";
 import React, { useState } from "react";
 import { auth } from "../Auth/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -6,7 +6,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import bg from "../assets/images/bg.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-
+import Popup from "../components/Popup";
 
 function LoginPage() {
   const [email, setEmail] = useState("");
@@ -15,10 +15,14 @@ function LoginPage() {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [showPopup, setShowPopup] = useState(true);
 
+  const handleClosePopup = () => {
+    setShowPopup(false);
+  };
   const navigate = useNavigate();
-const location = useLocation();
-const from = location.state?.from?.pathname || "/gallery";
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/gallery";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,8 +33,7 @@ const from = location.state?.from?.pathname || "/gallery";
       setSuccess("Login successful!");
       setTimeout(() => {
         setSuccess("");
-        // navigate("/gallery");
-        navigate(from, {replace : true});
+        navigate(from, { replace: true });
       }, 3000);
     } catch (error) {
       setError("Invalid email or password");
@@ -57,7 +60,7 @@ const from = location.state?.from?.pathname || "/gallery";
       >
         {/* Error Banner */}
         {error && (
-          <div className="fixed top-0 right-0 m-4 p-4 bg-red-500 text-white rounded-lg shadow">
+          <div className="fixed top-0 right-0 m-4 p-4 sm:px10 sm:py-10 bg-red-500 text-white rounded-lg shadow">
             {error}
           </div>
         )}
@@ -67,6 +70,9 @@ const from = location.state?.from?.pathname || "/gallery";
             {success}
           </div>
         )}
+        {/* popup banner */}
+        <div>{showPopup && <Popup onClose={handleClosePopup} />}</div>
+
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto h-screen lg:py-0">
           <div className="w-full bg-white  rounded-lg shadow-xl dark:border md:mt-0 sm:max-w-md xl:p-0  dark:border-gray-700">
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
@@ -78,6 +84,7 @@ const from = location.state?.from?.pathname || "/gallery";
               <h1 className="text-lg font-semibold leading-tight tracking-tight md:text-2 text-gray-900">
                 Log in to your account
               </h1>
+              {/* form */}
               <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
                 <div>
                   <label
@@ -130,7 +137,6 @@ const from = location.state?.from?.pathname || "/gallery";
                         aria-describedby="remember"
                         type="checkbox"
                         className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
-                        required
                       />
                     </div>
                     <div className="ml-3 text-sm">
@@ -160,13 +166,3 @@ const from = location.state?.from?.pathname || "/gallery";
 
 export default LoginPage;
 
-// import React from "react";
-// import Banner from '../components/Banner';
-// const Home = () => {
-//     return (
-//         <div className="home">
-//             <Banner />
-//         </div>
-//     )
-// }
-// export default Home
