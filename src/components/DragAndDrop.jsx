@@ -3,34 +3,24 @@ import "aos/dist/aos.css"; /* Animation on scroll */
 import React, { useEffect } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const filterImages = (images, searchTerm, selectedTags, selectedTag) => {
+const filterImages = (images, searchTerm, selectedCategory) => {
   return images.filter((image) => {
-    const includesSelectedTags =
-      selectedTags.length === 0 ||
-      selectedTags.some((tag) => image.tags.includes(tag));
-    const isMatchingSelectedTag =
-      selectedTag === "All" || image.tags.includes(selectedTag);
-    return includesSelectedTags && isMatchingSelectedTag;
+    const isMatchingSelectedCategory =
+      selectedCategory === "All Category" || image.category === selectedCategory;
+    return isMatchingSelectedCategory;
   });
 };
 
 const DragAndDrop = ({
   searchTerm,
   setImages,
-  selectedTags,
-  selectedTag,
+  selectedCategory,
   images,
   loading,
 }) => {
-  const filteredImages = filterImages(
-    images,
-    searchTerm,
-    selectedTags,
-    selectedTag
-  );
+  const filteredImages = filterImages(images, searchTerm, selectedCategory);
 
   const handleDragEnd = (result) => {
     if (!result.destination) return;

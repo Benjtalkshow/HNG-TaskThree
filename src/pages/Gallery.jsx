@@ -3,19 +3,34 @@ import Navbar from "../components/Navbar";
 import DragAndDrop from "../components/DragAndDrop";
 import LogoutButton from "../components/Logout";
 
-const DragAndDropPage = () => {
+const Gallery = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedTags, setSelectedTags] = useState([]);
-  const [selectedTag, setSelectedTag] = useState("All"); // Initialize with 'All' or a default tag
+  const [selectedCategory, setSelectedCategory] = useState("All Category");
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const fetchImagesByTag = (tag, searchTerm) => {
+  const categories = [
+    "All Category",
+    "Fashion",
+    "Flags",
+    "Technology",
+    "Sports",
+  ];
+
+  const filterImages = (images, selectedCategory) => {
+    return images.filter((image) => {
+      return (
+        selectedCategory === "All Category" || image.category === selectedCategory
+      );
+    });
+  };
+
+  const fetchImagesByCategory = (category, searchTerm) => {
     setLoading(true);
     const API_KEY = "mmyqqQoTTmiCejdNnCaeqDUoYO0vOoL0TPPBSxkfOkTKS9mPzN9JTIDH";
-    let API_URL = `https://api.pexels.com/v1/search?query=${tag}&per_page=36&page=10`;
+    let API_URL = `https://api.pexels.com/v1/search?query=${category}&per_page=40&page=12`;
     if (searchTerm) {
-      API_URL = `https://api.pexels.com/v1/search?query=${searchTerm}&per_page=50&pagee=20`;
+      API_URL = `https://api.pexels.com/v1/search?query=${searchTerm}&per_page=50&page=20`;
     }
     fetch(API_URL, {
       method: "GET",
@@ -26,12 +41,13 @@ const DragAndDropPage = () => {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        const imagesWithTags = data.photos.map((photo) => ({
+        const imagesWithCategories = data.photos.map((photo) => ({
           id: photo.id.toString(),
           src: photo.src.large,
           alt: photo.photographer,
+          category: category,
         }));
-        setImages(imagesWithTags);
+        setImages(imagesWithCategories);
         setLoading(false);
       })
       .catch((error) => {
@@ -40,26 +56,45 @@ const DragAndDropPage = () => {
       });
   };
 
+  const handleCategoryClick = (category) => {
+    setSelectedCategory(category);
+    fetchImagesByCategory(category, searchTerm);
+  };
+
   const handleSearch = () => {
-    fetchImagesByTag(selectedTag, searchTerm);
+    fetchImagesByCategory(selectedCategory, searchTerm);
   };
 
   useEffect(() => {
-    fetchImagesByTag(selectedTag, searchTerm);
-  }, [selectedTag, searchTerm]);
+    fetchImagesByCategory(selectedCategory, searchTerm);
+  }, [selectedCategory, searchTerm]);
 
   return (
     <div>
       <LogoutButton />
       <Navbar setSearchTerm={setSearchTerm} onSearch={handleSearch} />
 
-      <div className="mb-[4rem]"></div>
+      <div className="mb-[1rem]"></div>
+
+      <div className="flex items-center justify-center py-4 md:py-8 flex-wrap">
+        {categories.map((category, index) => (
+          <button
+            key={index}
+            type="button"
+            className={`text-white border bg-gray-900 focus:bg-red-500 rounded-full text-base font-medium px-5 py-2.5 text-center mr-3 mb-3 ${
+              selectedCategory === category ? "bg-red-500" : ""
+            }`}
+            onClick={() => handleCategoryClick(category)}
+          >
+            {category}
+          </button>
+        ))}
+      </div>
 
       <DragAndDrop
         searchTerm={searchTerm}
         setImages={setImages}
-        selectedTags={selectedTags}
-        selectedTag={selectedTag}
+        selectedCategory={selectedCategory}
         images={images}
         loading={loading}
       />
@@ -67,4 +102,4 @@ const DragAndDropPage = () => {
   );
 };
 
-export default DragAndDropPage;
+export default Gallery;
