@@ -91,7 +91,7 @@ const DragAndDrop = ({
               </Droppable>
             </DragDropContext>
           ) : (
-            <div className="image-not-found text-gray-900">
+            <div className="image-not-found text-red-500 py-10 text-center font-bold w-full">
               Image not found for "{searchTerm}".
             </div>
           )}
