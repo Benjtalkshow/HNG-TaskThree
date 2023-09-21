@@ -1,5 +1,5 @@
 import "../styles/index.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { auth } from "../Auth/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -9,6 +9,7 @@ import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import Popup from "../components/Popup";
 
 function LoginPage() {
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [success, setSuccess] = useState("");
@@ -20,6 +21,7 @@ function LoginPage() {
   const handleClosePopup = () => {
     setShowPopup(false);
   };
+  
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/gallery";

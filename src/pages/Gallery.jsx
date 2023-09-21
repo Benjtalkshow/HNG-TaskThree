@@ -1,23 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import Navbar from '../components/Navbar';
-import DragAndDrop from '../components/DragAndDrop';
+import React, { useState, useEffect } from "react";
+import Navbar from "../components/Navbar";
+import DragAndDrop from "../components/DragAndDrop";
+import LogoutButton from "../components/Logout";
 
 const DragAndDropPage = () => {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const [selectedTags, setSelectedTags] = useState([]);
-  const [selectedTag, setSelectedTag] = useState('All'); // Initialize with 'All' or a default tag
+  const [selectedTag, setSelectedTag] = useState("All"); // Initialize with 'All' or a default tag
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const fetchImagesByTag = (tag, searchTerm) => {
     setLoading(true);
-    const API_KEY = 'mmyqqQoTTmiCejdNnCaeqDUoYO0vOoL0TPPBSxkfOkTKS9mPzN9JTIDH';
+    const API_KEY = "mmyqqQoTTmiCejdNnCaeqDUoYO0vOoL0TPPBSxkfOkTKS9mPzN9JTIDH";
     let API_URL = `https://api.pexels.com/v1/search?query=${tag}&per_page=36&page=10`;
     if (searchTerm) {
       API_URL = `https://api.pexels.com/v1/search?query=${searchTerm}&per_page=50&pagee=20`;
     }
     fetch(API_URL, {
-      method: 'GET',
+      method: "GET",
       headers: {
         Authorization: API_KEY,
       },
@@ -34,7 +35,7 @@ const DragAndDropPage = () => {
         setLoading(false);
       })
       .catch((error) => {
-        console.error('Error fetching images:', error);
+        console.error("Error fetching images:", error);
         setLoading(false);
       });
   };
@@ -49,9 +50,10 @@ const DragAndDropPage = () => {
 
   return (
     <div>
+      <LogoutButton />
       <Navbar setSearchTerm={setSearchTerm} onSearch={handleSearch} />
- 
-<div className="mb-[4rem]"></div>
+
+      <div className="mb-[4rem]"></div>
 
       <DragAndDrop
         searchTerm={searchTerm}
