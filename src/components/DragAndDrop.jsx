@@ -55,7 +55,7 @@ const DragAndDrop = ({
                   <div
                     {...provided.droppableProps}
                     ref={provided.innerRef}
-                    className="image-grid-container grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-4 md:px-10 cursor-move"
+                    className="image-grid-container mb-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-4 md:px-10 cursor-move"
                   >
                     {filteredImages.map((image, index) => (
                       <Draggable
