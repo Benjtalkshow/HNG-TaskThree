@@ -80,7 +80,7 @@ function LoginPage() {
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
               <div>
                 <h1 className="text-center text-2xl font-bold text-red-400">
-                  Drag and Drop React Gallery
+                  CakePixie
                 </h1>
               </div>
               <h1 className="text-lg font-semibold leading-tight tracking-tight md:text-2 text-gray-900">
