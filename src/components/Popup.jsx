@@ -20,7 +20,7 @@ function Popup({ onClose }) {
     >
       <div className="bg-white px-6 sm:py-10 shadow-lg rounded-lg">
         <p className="text-gray-800 font-bold py-5 sm:py-0">
-          Note: The Photographer's names are used as tags on the images.😉
+          Email: user@example.com, Password: 1Password. Happy Drag&Drop😉
         </p>
       </div>
     </div>
